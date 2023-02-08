@@ -1,6 +1,6 @@
 package com.martinez.app.proyecto1.services;
 
-import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +73,9 @@ public class ProductosService implements IService<ProductosListDTO, ProductosCre
 		productoDTO.setNombre(producto.getNombre());
 		productoDTO.setCantidad(producto.getCantidad());
 		productoDTO.setDescripcion(producto.getDescripcion());
-		productoDTO.setFechaRegistro(producto.getFechaRegistro().toString());
+		SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
+		String stringDate= DateFor.format(producto.getFechaRegistro());
+		productoDTO.setFechaRegistro(stringDate);
 		productoDTO.setCodigoProducto(producto.getCodigoProducto());
 		return productoDTO;
 	}
